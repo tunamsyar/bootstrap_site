@@ -1,0 +1,80 @@
+
+@media all and (max-width: 1199px) {
+  .features {
+    max-width: 600px;
+  }
+}
+.background {
+        background-image: asset-url("moto.jpg");
+        height: calc(100vh - 52px);
+        width: 100%;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      h1{
+        font-weight:bold;
+        font-size: 100px;
+        color: white;
+        font-family:arial;
+      }
+
+      h2{
+        color: white;
+        font-family: sans-serif;
+      }
+.background-2 {
+  background-image: asset-url("mountains.jpg");
+  height: 50vh;
+  width: 100%;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  }
+  .features {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 50px auto;
+    justify-content: center;
+  }
+  .feature {
+  flex: 0 0 280px;
+  margin: 20px 10px;
+}
+
+.minipics {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 50px auto;
+  justify-content: center;
+}
+
+.image_tag{
+flex: 0 0 280px;
+position: relative;
+}
+
+.image_box{
+ width: 100%;
+}
+
+
+.image_tag:hover .invisible-layout {
+  opacity: 0.5;
+  transition: all 0.3s ease-in-out;
+}
+
+.invisible-layout {
+  flex: 0 0 280px;
+  position: relative;
+
+}
