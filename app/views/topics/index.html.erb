@@ -1,0 +1,18 @@
+<div class="topics">
+<h1>Topics</h1>
+  <section class="background">
+  <div class="topics_parent">
+  <% @topics.each do |topic| %>
+    <div class="topics_child">
+        <h3><%= link_to topic.title, topic_path(topic) %></h3>
+        <h5><%= topic.description %></h5>
+        <%= link_to "Edit Topic", edit_topic_path(topic) %>
+    </div>
+    <% end %>
+  </div>
+<div class="add_new">
+  <h2><%= link_to "Add New Topics", new_topic_path %></h2>
+</div>
+</section>
+
+</div>

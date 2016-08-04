@@ -1,0 +1,18 @@
+<div class="post">
+  <h1>Posts</h1>
+  <section class="background">
+    <div class="post_parent">
+<% @posts.each do |post| %>
+  <div class="post_child">
+    <h3><%= link_to post.title, post_path(post) %></h3>
+    <h5><%= post.body%></h5>
+
+      <%= link_to "Edit POST", edit_post_path(post) %>
+    </div>
+    <% end %>
+  </div>
+  <div class="add_new">
+    <h2><%= link_to "Create POST", new_post_path %></h2>
+  </div>
+</section>
+</div>
