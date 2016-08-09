@@ -1,4 +1,4 @@
-<%= form_for(@posts, url: posts_path, html: { id: "post-create-form" }) do |f| %>
+<%= form_for(@post, url: topic_posts_path, html: { id: "post-create-form" }) do |f| %>
   <h1 class="text-center">
     Create post
   </h1>
@@ -16,4 +16,18 @@
   <div class="form-group text-center">
     <%= f.submit "Create post", class: "btn btn-success btn-lg" %>
   </div>
+
+  <div class="form-group">
+  <h4 class="text-center"> Post Image </h4>
+  <div id="preview-image">
+    <% if @post.image? %>
+      <%= image_tag @post.image, class: "img-settings img-responsive center-block" %>
+    <% end %>
+  </div>
+</div>
+
+<div class="form-group">
+<%= f.file_field :image, id: "post_image_field", class: 'form-control image-uploader' %>
+</div>
+
 <% end %>

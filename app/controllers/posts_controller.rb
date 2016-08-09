@@ -1,53 +1,56 @@
 class PostsController < ApplicationController
 
-  def index
-@posts = Post.all.order(id: :DESC)
-  end
+def index
+  @topic = Topic.includes(:posts).find_by(id: params[:topic_id])
+  @posts = @topic.posts.order("created_at DESC")
+end
 
-  def show
-    @posts = Post.find_by(id: params[:id])
-  end
-
-  def new
-    @posts = Post.new
-  end
+def new
+  @topic = Topic.find_by(id: params[:topic_id])
+  @post = Post.new
+end
 
 def create
-  @posts = Post.new(post_params)
+  @topic = Topic.find_by(id: params[:topic_id])
+  @post = Post.new(post_params.merge(topic_id: params[:topic_id]))
 
-  if @posts.save
-    redirect_to posts_path
+  if @post.save
+    flash[:success] = "You've created a new post."
+    redirect_to topic_posts_path(@topic)
   else
-    render new_post_path
+    flash[:danger] = @post.errors.full_messages
+    redirect_to new_topic_post_path(@topic)
   end
 end
 
 def edit
-  @posts = Post.find_by(id: params[:id])
+  @post = Post.find_by(id: params[:id])
+  @topic = @post.topic
 end
 
 def update
-   @posts = Post.find_by(id: params[:id])
-   if @posts.update(post_params)
-     redirect_to post_path(@posts)
-   else
-     redirect_to edit_post_path(@posts)
-   end
+  @topic = Topic.find_by(id: params[:topic_id])
+  @post = Post.find_by(id: params[:id])
+
+  if @post.update(post_params)
+    redirect_to topic_posts_path(@topic)
+  else
+    redirect_to edit_topic_post_path(@topic, @post)
+  end
 end
 
 def destroy
-  @posts = Post.find_by(id: params[:id])
-  if @posts.destroy
-    redirect_to posts_path
-  else
-    redirect_to post_path(@posts)
+  @post = Post.find_by(id: params[:id])
+  @topic = @post.topic
+
+  if @post.destroy
+    redirect_to topic_posts_path(@topic)
   end
 end
 
-  private
+private
 
-  def post_params
-    params.require(:post).permit(:title, :body)
-  end
-
+def post_params
+  params.require(:post).permit(:title, :body, :image)
+end
 end

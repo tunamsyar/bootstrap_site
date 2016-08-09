@@ -1,11 +1,9 @@
 class TopicsController < ApplicationController
+
   def index
     @topics = Topic.all.order(created_at: :desc)
   end
 
-  def show
-    @topic = Topic.find_by(id: params[:id])
-  end
 
   def new
     @topic = Topic.new
@@ -13,13 +11,13 @@ class TopicsController < ApplicationController
 
   def create
     @topic = Topic.new(topic_params)
-
     if @topic.save
+      flash[:success] = "You've created a new topic."
       redirect_to topics_path
     else
+      flash[:danger] = @topic.errors.full_messages
       redirect_to new_topic_path
     end
-
   end
 
 def edit
