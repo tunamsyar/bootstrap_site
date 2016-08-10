@@ -1,0 +1,40 @@
+<%= form_for(@user, url: user_path(@user), html: { id: "user-create-form" }) do |f| %>
+  <div class="form-group">
+    <h4 class="text-center"> Profile Picture </h4>
+      <div id="preview-image">
+        <% if @user.image? %>
+        <%= image_tag @user.image, class: "img-settings img-responsive center-block" %>
+        <% end %>
+      </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.file_field :image, id: "user_image_field", class: 'form-control image-uploader' %>
+  </div>
+
+  <h1 class="text-center">
+    User Account
+  </h1>
+
+  <div class="form-group">
+    <h4> <%= f.label :username_field, "Username" %> </h4>
+    <%= f.text_field :username, required: true, id: "username_field", class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <h4> <%= f.label :email_field, "Email" %> </h4>
+    <%= f.text_field :email, id: "email_field", class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <h4> <%= f.label :password_field, "Password" %> </h4>
+    <%= f.password_field :password, id: "password_field", class: 'form-control' %>
+
+    <h4> <%= f.label :password_field, "Password Confirmation" %> </h4>
+     <%= f.password_field :password_confirmation, id: "password_confirmation_field", class: 'form-control' %>
+  </div>
+
+  <div class="form-group text-center">
+    <%= f.submit "Update Account", class: "btn btn-success btn-lg" %>
+  </div>
+<% end %>
