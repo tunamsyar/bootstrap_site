@@ -24,6 +24,8 @@ class TopicsController < ApplicationController
 
 def edit
   @topic = Topic.find_by(id: params[:id])
+  authorize @topic
+
 end
 
 def update
@@ -43,6 +45,8 @@ def destroy
     else
       redirect_to topics_path(@topic)
     end
+    authorize @topic
+
   end
   private
 

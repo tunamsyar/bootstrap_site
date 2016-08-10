@@ -33,6 +33,7 @@ gem 'carrierwave'
 gem "mini_magick"
 
 gem "pundit"
+gem "figaro"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
