@@ -32,7 +32,8 @@ gem "font-awesome-rails"
 gem 'carrierwave'
 gem "mini_magick"
 gem 'responders'
-# gem 'remotipart'
+gem 'remotipart', github: 'sr3d/remotipart'
+gem 'kaminari'
 
 gem "pundit"
 gem "figaro"

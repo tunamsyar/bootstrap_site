@@ -1,6 +1,6 @@
 <%= form_for(comment, url: topic_post_comments_path(@topic, post),
-    method: :post,remote: true,
-    html: { id: "comment-create-form" }) do |f| %>
+    method: :post,remote: true, authenticity_token: true,
+    html: { id: "comment-create-form", multipart: true }) do |f| %>
 
   <h1 class="text-center">
     Create comment

@@ -69,7 +69,7 @@ class CommentsController < ApplicationController
 
     if @comment.destroy
       flash.now[:success] = "Delete batang hidung mu!"
-      redirect_to topic_post_comments_path(@topic, @post)
+      # redirect_to topic_post_comments_path(@topic, @post)
     end
   end
 

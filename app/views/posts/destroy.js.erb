@@ -1,0 +1,4 @@
+$('#flash-messages-container').html("<%=j render partial: 'partials/flash_messages' %>")
+  <% if @post.destroyed? %>
+    $("#post_<%= @post.id %>").remove()
+  <%end%>

@@ -1,5 +1,5 @@
-<%= form_for(topic, url: topics_path(topic),method: :post,remote: true,
-    html: { id: "topic-create-form" }) do |f| %>
+<%= form_for(topic, url: topics_path(topic),method: :post,remote: true, authenticity_token: true,
+    html: { id: "topic-create-form", multipart: true }) do |f| %>
 
     <h1 class="text-center">
     Create Topic

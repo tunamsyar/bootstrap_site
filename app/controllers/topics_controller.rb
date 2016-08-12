@@ -5,6 +5,7 @@ class TopicsController < ApplicationController
   def index
     @topics = Topic.all.order(created_at: :desc)
     @topic = Topic.new
+    @topics = Topic.page(params[ :page]).per(5)
   end
 
   # def new
@@ -44,9 +45,10 @@ end
 def destroy
     @topic = Topic.find_by(id: params[:id])
     if @topic.destroy
-      redirect_to topics_path
-    else
-      redirect_to topics_path(@topic)
+      flash.now[:success] = "Topic suda delete da.."
+    #   redirect_to topics_path
+    # else
+    #   redirect_to topics_path(@topic)
     end
     authorize @topic
 

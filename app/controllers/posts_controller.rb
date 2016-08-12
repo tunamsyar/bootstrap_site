@@ -42,7 +42,8 @@ class PostsController < ApplicationController
     authorize @post
 
     if @post.destroy
-      redirect_to topic_posts_path(@topic)
+      flash.now[:success] = "Post suda tada"
+      # redirect_to topic_posts_path(@topic)
     end
   end
 

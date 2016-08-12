@@ -1,0 +1,4 @@
+$('#flash-messages-container').html("<%=j render partial: 'partials/flash_messages' %>")
+  <% if @topic.destroyed? %>
+    $("#topic_<%= @topic.id %>").remove()
+  <%end%>
