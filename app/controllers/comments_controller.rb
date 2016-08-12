@@ -1,30 +1,45 @@
-class CommentsController <ApplicationController
-before_action :authenticate!, only: [:create, :edit, :update, :new, :destroy]
+class CommentsController < ApplicationController
+  respond_to :js
+  before_action :authenticate!, only: [:create, :edit, :update, :new, :destroy]
+
   def index
     @topic = Topic.includes(:posts).find_by(id: params[:topic_id])
-    @posts = Post.find_by(id: params[:post_id])
-    @comments = @posts.comments.order(id: :DESC)
-  end
-
-  def new
-    @topic = Topic.find_by(id: params[:topic_id])
     @post = Post.find_by(id: params[:post_id])
+    @comments = @post.comments.order(id: :ASC)
     @comment = Comment.new
   end
+
+  # def new
+  #   @topic = Topic.find_by(id: params[:topic_id])
+  #   @post = Post.find_by(id: params[:post_id])
+  # end
 
   def create
     @topic = Topic.find_by(id: params[:topic_id])
     @post = Post.find_by(id: params[:post_id])
     @comment = current_user.comments.build(comment_params.merge(post_id: params[:post_id]))
+    @new_comment = Comment.new
 
     if @comment.save
-      flash[:success] ="You've created a comment"
-      redirect_to topic_post_comments_path(@topic, @post)
+      flash.now[:success] = "Comment created"
     else
-      flash[:danger] = @comment.errors.full_messages
-      redirect_to new_topic_post_comment_path(@topic ,@post)
+      flash.now[:danger] = @comment.errors.full_messages
     end
   end
+
+  # def create
+  #   @topic = Topic.find_by(id: params[:topic_id])
+  #   @post = Post.find_by(id: params[:post_id])
+  #   @comment = current_user.comments.build(comment_params.merge(post_id: params[:post_id]))
+  #
+  #   if @comment.save
+  #     flash[:success] ="You've created a comment"
+  #     redirect_to topic_post_comments_path(@topic, @post)
+  #   else
+  #     flash[:danger] = @comment.errors.full_messages
+  #     redirect_to new_topic_post_comment_path(@topic ,@post)
+  #   end
+  # end
 
   def edit
     @comment=Comment.find_by(id: params[:id])
@@ -50,16 +65,18 @@ before_action :authenticate!, only: [:create, :edit, :update, :new, :destroy]
     @topic = Topic.find_by(id: params[:topic_id])
     @post = Post.find_by(id: params[:post_id])
     @comment = Comment.find_by(id: params[:id])
+    authorize @comment
 
     if @comment.destroy
+      flash.now[:success] = "Delete batang hidung mu!"
       redirect_to topic_post_comments_path(@topic, @post)
     end
   end
 
-private
+  private
 
-def comment_params
-  params.require(:comment).permit(:body, :image)
-end
+  def comment_params
+    params.require(:comment).permit(:body, :image)
+  end
 
 end

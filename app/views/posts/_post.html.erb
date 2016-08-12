@@ -1,0 +1,9 @@
+<div class="post_child">
+  <h3><%= link_to post.title, topic_post_comments_path(post.topic,post) %></h3>
+  <h5><%= post.body %></h5>
+
+  <%= image_tag post.image %>
+  <%= link_to "Edit Post", edit_topic_post_path(topic, post) %>
+  <%= link_to "Delete", topic_post_path(topic, post), method: :delete, data: { confirm: "Delete?" } %>
+
+</div>

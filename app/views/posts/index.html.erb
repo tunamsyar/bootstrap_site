@@ -1,21 +1,18 @@
 <div class="posts">
   <h1>Posts</h1>
   <section class="background">
+
     <div class="post_parent">
-      <% @posts.each do |post| %>
-        <div class="post_child">
-          <h3><%= link_to post.title, topic_post_comments_path(@topic,post) %></h3>
-          <h5><%= post.body %></h5>
-
-          <%= image_tag post.image %>
-          <%= link_to "Edit Post", edit_topic_post_path(@topic,post) %>
-          <%= link_to "Delete", topic_post_path(@topic,post), method: :delete, data: { confirm: "Delete?" } %>
-
+        <div id= "posts">
+          <% @posts.each do |post| %>
+            <%= render partial: "post", locals: {topic: @topic, post: post}%>
+          <%end%>
         </div>
-      <% end %>
+
+        <div id="posts-form-container">
+          <%= render partial: "form", locals: {topic: @topic, post: @post}%>
+        </div>
     </div>
-        <div class="add_new">
-          <h2><%= link_to "Create POST", new_topic_post_path %></h2>
-        </div>
+
   </section>
 </div>
