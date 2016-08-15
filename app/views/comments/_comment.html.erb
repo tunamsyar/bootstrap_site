@@ -1,9 +1,8 @@
-<div id="comment_<%=comment.id%>">
-
-  <div class="comment_child">
+<!-- <div > -->
+  <div id="comment_<%=comment.id%>" class="comment_child">
       <h1><%= comment.body %></h1>
       <%= image_tag comment.image %>
-      <%= link_to "Edit Comment", edit_topic_post_comment_path(@topic, @post, comment) %>
+      <%= link_to "Edit Comment", edit_topic_post_comment_path(@topic, @post, comment), remote: true %>
       <%= link_to "Delete", topic_post_comment_path(@topic, @post, comment), method: :delete, remote: true, data: { confirm: "Delete?" } %>
   </div>
-</div>
+<!-- </div> -->

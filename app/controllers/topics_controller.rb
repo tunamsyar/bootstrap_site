@@ -3,9 +3,9 @@ class TopicsController < ApplicationController
   before_action :authenticate!, only: [:create, :edit, :update, :new, :destroy]
 
   def index
-    @topics = Topic.all.order(created_at: :desc)
+    # @topics = Topic.all.order(id: :DESC)
     @topic = Topic.new
-    @topics = Topic.page(params[ :page]).per(5)
+    @topics = Topic.page(params[ :page]).per(5).all.order(id: :DESC)
   end
 
   # def new
@@ -36,9 +36,11 @@ def update
     @topic = Topic.find_by(id: params[:id])
 
     if @topic.update(topic_params)
-      redirect_to topics_path
+      flash.now[:success] = "Topic Updated"
+      # redirect_to topics_path
     else
-      redirect_to edit_topic_path(@topic)
+      flash.now[:danger] = "You've created a Dinesh"
+      # redirect_to edit_topic_path(@topic)
     end
 end
 

@@ -34,6 +34,7 @@ gem "mini_magick"
 gem 'responders'
 gem 'remotipart', github: 'sr3d/remotipart'
 gem 'kaminari'
+gem 'redis', '~>3.2'
 
 gem "pundit"
 gem "figaro"

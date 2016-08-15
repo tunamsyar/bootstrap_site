@@ -2,7 +2,7 @@
 
   .background{
       background-image: asset-url("bell.jpeg");
-      height: 100vh;
+      height: 100%;
       width: 100%;
       background-position: 50% 50%;
       background-repeat: no-repeat;
@@ -33,6 +33,11 @@
     border-width: medium;
     text-align: center;
 
+    h1{
+      text-align: center;
+      vertical-align: text-top;
+      color: white;
+    }
     a:link, a:visited, a:hover,a:active{
       color: white;
     }

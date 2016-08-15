@@ -1,0 +1,2 @@
+$('#flash-messages-container').html("<%=j render partial: 'partials/flash_messages' %>")
+$('#post_<%=@post.id%>').html("<%=j render partial: 'posts/edit', locals: { topic: @topic, post: @post } %>")

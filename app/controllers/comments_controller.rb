@@ -54,9 +54,11 @@ class CommentsController < ApplicationController
     @comment = Comment.find_by(id: params[:id])
 
     if @comment.update(comment_params)
-      redirect_to topic_post_comments_path(@topic, @post)
+      flash.now[:success] ="You've created a comment"
+      # redirect_to topic_post_comments_path(@topic, @post)
     else
-      redirect_to edit_topic_post_comment_path(@topic, @post)
+      flash.now[:danger] ="You've created a Dinesh"
+      # redirect_to edit_topic_post_comment_path(@topic, @post)
     end
 
   end
