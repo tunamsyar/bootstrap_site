@@ -17,12 +17,11 @@ class TopicsController < ApplicationController
     @topic = current_user.topics.build(topic_params)
     @new_topic = Topic.new
     authorize @topic
+    
     if @topic.save
       flash[:success] = "You've created a new topic."
-      # redirect_to topics_path
     else
       flash[:danger] = @topic.errors.full_messages
-      # redirect_to new_topic_path
     end
   end
 

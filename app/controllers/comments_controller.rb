@@ -21,25 +21,12 @@ class CommentsController < ApplicationController
     @new_comment = Comment.new
 
     if @comment.save
+      CommentBroadcastJob.set(wait: 0.1.seconds).perform_later("create", @comment)
       flash.now[:success] = "Comment created"
     else
       flash.now[:danger] = @comment.errors.full_messages
     end
   end
-
-  # def create
-  #   @topic = Topic.find_by(id: params[:topic_id])
-  #   @post = Post.find_by(id: params[:post_id])
-  #   @comment = current_user.comments.build(comment_params.merge(post_id: params[:post_id]))
-  #
-  #   if @comment.save
-  #     flash[:success] ="You've created a comment"
-  #     redirect_to topic_post_comments_path(@topic, @post)
-  #   else
-  #     flash[:danger] = @comment.errors.full_messages
-  #     redirect_to new_topic_post_comment_path(@topic ,@post)
-  #   end
-  # end
 
   def edit
     @comment=Comment.find_by(id: params[:id])

@@ -1,18 +1,17 @@
-<div class="comments">
-  <h1>Comments</h1>
-  <section class="background">
+<div class="comments index" data-id="<%= @post.id %>">
+  <div class="comments-index-container">
+    <div class="comment">
+      <h1>Comments</h1>
+        <div id="comments">
+          <% @comments.each do |comment| %>
+            <%= render partial: "comment", locals: { comment: comment, post: @post, current_user: comment.user_id} %>
+          <% end %>
+        </div>
 
+        <div id="comments-form-container">
+          <%= render partial: "form", locals: { comment: @comment, post: @post} %>
+        </div>
 
-      <div id="comments">
-        <% @comments.each do |comment| %>
-          <%= render partial: "comment", locals: { comment: comment, post: @post } %>
-        <% end %>
-      </div>
-
-
-    <div id="comments-form-container">
-      <%= render partial: "form", locals: { comment: @comment, post: @post, topic: @topic } %>
     </div>
-
-  </section>
+  </div>
 </div>

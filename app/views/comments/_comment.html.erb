@@ -1,8 +1,12 @@
-<!-- <div > -->
-  <div id="comment_<%=comment.id%>" class="comment_child">
-      <h1><%= comment.body %></h1>
-      <%= image_tag comment.image %>
-      <%= link_to "Edit Comment", edit_topic_post_comment_path(@topic, @post, comment), remote: true %>
-      <%= link_to "Delete", topic_post_comment_path(@topic, @post, comment), method: :delete, remote: true, data: { confirm: "Delete?" } %>
-  </div>
-<!-- </div> -->
+<div class="comments"data-id="<%= comment.id %>">
+        <h1><%= comment.body %></h1>
+        <div class='control-panel'>
+          <% if comment.user_id == current_user %>
+            <%= link_to "Edit Comment", edit_topic_post_comment_path(post.topic, post, comment), remote: true %>
+          <%end%>
+
+          <% if comment.user_id ==  current_user || current_user&.admin? || current_user&.moderator? %>
+            <%= link_to "Delete", topic_post_comment_path(post.topic, post, comment), method: :delete, remote: true, data: { confirm: "Delete?" } %>
+          <% end %>
+        </div>
+</div>
