@@ -41,6 +41,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find_by(id: params[:id])
 
     if @comment.update(comment_params)
+      CommentBroadcastJob.perform_later("update", @comment)
       flash.now[:success] ="You've created a comment"
       # redirect_to topic_post_comments_path(@topic, @post)
     else
@@ -57,6 +58,7 @@ class CommentsController < ApplicationController
     authorize @comment
 
     if @comment.destroy
+      CommentBroadcastJob.perform_now("destroy", @comment)
       flash.now[:success] = "Delete batang hidung mu!"
       # redirect_to topic_post_comments_path(@topic, @post)
     end
