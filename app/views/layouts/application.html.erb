@@ -3,11 +3,12 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Magicforums2</title>
-      <% if current_user %>
+          <% if current_user %>
           <meta user="<%=current_user.username%>">
           <% if current_user.admin? || current_user.moderator? %>
-          <meta name="admin">
+          <meta name="wizardwonka">
           <% end %>
+          
       <% end %>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>

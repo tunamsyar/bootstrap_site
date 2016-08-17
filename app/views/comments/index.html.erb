@@ -1,17 +1,20 @@
 <div class="comments index" data-id="<%= @post.id %>">
-  <div class="comments-index-container">
+
     <div class="comment">
       <h1>Comments</h1>
-        <div id="comments">
-          <% @comments.each do |comment| %>
-            <%= render partial: "comment", locals: { comment: comment, post: @post, current_user: comment.user_id} %>
-          <% end %>
-        </div>
 
-        <div id="comments-form-container">
-          <%= render partial: "form", locals: { comment: @comment, post: @post} %>
-        </div>
+      <div id="comments">
+        <% @comments.each do |comment| %>
+        <%= render partial: "comment", locals: { comment: comment, post: @post, extra_class: ""} %>
+        <% end %>
+      </div>
+
+      <% if current_user%>
+      <div id="comments-form-container">
+        <%= render partial: "form", locals: { comment: @comment, post: @post} %>
+      </div>
+      <%end%>
 
     </div>
-  </div>
+
 </div>
