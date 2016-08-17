@@ -1,9 +1,9 @@
-<div class="comments index" data-id="<%= @post.id %>">
+<div class="comments-index" data-id="<%= @post.id %>">
 
-    <div class="comment">
+
       <h1>Comments</h1>
 
-      <div id="comments">
+      <div class="comments">
         <% @comments.each do |comment| %>
         <%= render partial: "comment", locals: { comment: comment, post: @post, extra_class: ""} %>
         <% end %>
@@ -15,6 +15,6 @@
       </div>
       <%end%>
 
-    </div>
-  
+
+
 </div>
