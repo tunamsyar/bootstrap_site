@@ -1,4 +1,6 @@
 class Post < ApplicationRecord
+  extend FriendlyId
+  friendly_id :title
   has_many :comments, dependent: :destroy
    belongs_to :topic
    belongs_to :user
