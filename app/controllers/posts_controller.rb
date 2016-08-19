@@ -9,9 +9,9 @@ class PostsController < ApplicationController
 
   def create
     @topic = Topic.friendly.find(params[:topic_id])
-    @post = current_user.posts.build(post_params.merge(topic_id: params[:topic_id]))
+    @post = current_user.posts.build(post_params.merge(topic_id: @topic.id))
     @new_post = Post.new
-
+    
     if @post.save
       flash[:success] = "You've created a new post."
     else

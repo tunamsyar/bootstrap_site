@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   extend FriendlyId
-  friendly_id :title
+  friendly_id :title, use: :slugged
   has_many :comments, dependent: :destroy
    belongs_to :topic
    belongs_to :user

@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
   def create
     @topic = Topic.friendly.find(params[:topic_id])
     @post = Post.friendly.find(params[:post_id])
-    @comment = current_user.comments.build(comment_params.merge(post_id: params[:post_id]))
+    @comment = current_user.comments.build(comment_params.merge(post_id: @post.id))
     @new_comment = Comment.new
 
     if @comment.save

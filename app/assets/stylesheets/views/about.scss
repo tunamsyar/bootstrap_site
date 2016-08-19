@@ -1,27 +1,27 @@
 .about {
   .background {
-          background-image: asset-url("moto.jpg");
-          height: 100vh;
-          width: 100%;
-          background-position: 50% 50%;
-          background-repeat: no-repeat;
-          background-size: cover;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
+    background-image: asset-url("coffee.jpg");
+    height: 100vh;
+    width: 100%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
   .background-2 {
-          background-image: asset-url("honda.jpg");
-          height: 50vh;
-          width: 100%;
-          background-position: 70% 30%;
-          background-repeat: no-repeat;
-          background-size: cover;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          }
+    background-image: asset-url("honda.jpg");
+    height: 50vh;
+    width: 100%;
+    background-position: 70% 30%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
   .features {
     display: flex;
@@ -57,19 +57,26 @@
     padding-top: 10px;
   }
 
-h1{
-  font-weight:bold;
-  font-size: 100px;
-  color: white;
-  font-family:arial;
-  position: relative;
+  h1{
+    font-weight:bold;
+    font-size: 100px;
+    color: white;
+    font-family:arial;
+    position: relative;
   }
 
-h2{
+  h2{
     color: white;
   }
 
   h3{
+    color: white;
+  }
+  p span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family:arial;
     color: white;
   }
 }

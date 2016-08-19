@@ -8,4 +8,13 @@ class Comment < ApplicationRecord
   def total_votes
     votes.pluck(:value).sum
   end
+
+  def total_upvote
+    votes.where(value: 1).count
+  end
+
+  def total_downvote
+    votes.where(value: -1).count
+  end
+  
 end

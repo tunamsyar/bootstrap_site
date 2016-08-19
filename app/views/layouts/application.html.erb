@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Magicforums2</title>
-          <% if current_user %>
-          <meta user="<%=current_user.username%>">
-          <% if current_user.admin? || current_user.moderator? %>
-          <meta name="wizardwonka">
-          <% end %>
-          
-      <% end %>
-    <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Magicforums2</title>
+  <% if current_user %>
+  <meta user="<%=current_user.username%>">
+  <% if current_user.admin? || current_user.moderator? %>
+  <meta name="wizardwonka">
+  <% end %>
 
-  <body>
-    <div id="header">
-      <%= render partial: 'partials/header' %>
-    </div>
-        <%= render partial: "partials/flash_messages" %>
-    <%= yield %>
-  </body>
+  <% end %>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+  <div id="header">
+    <%= render partial: 'partials/header' %>
+  </div>
+  <%= render partial: "partials/flash_messages" %>
+  <%= render partial: "sessions/login"%>
+  <%= render partial: "users/register"%>
+  <%= yield %>
+</body>
 </html>

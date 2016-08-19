@@ -5,14 +5,14 @@ class VotesController < ApplicationController
   def upvote
     update_vote(1)
     VoteBroadcastJob.perform_now(@vote.comment)
-    flash.now[:success] = "You've Upvoted"
+    flash.now[:success] = "You've Upvoted!"
 
   end
 
   def downvote
-    update_vote(-1)
-    VoteBroadcastJob.perform_now(@vote.comment)
-    flash.now[:alert] = "You've Downvoted"
+      update_vote(-1)
+      VoteBroadcastJob.perform_now(@vote.comment)
+      flash.now[:alert] = "You've Downvoted!"
   end
 
   private
