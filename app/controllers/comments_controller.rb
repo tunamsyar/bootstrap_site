@@ -39,6 +39,7 @@ class CommentsController < ApplicationController
     @topic = Topic.friendly.find(params[:topic_id])
     @post = Post.friendly.find(params[:post_id])
     @comment = Comment.find_by(id: params[:id])
+    authorize @comment
 
     if @comment.update(comment_params)
       CommentBroadcastJob.perform_later("update", @comment)
@@ -60,7 +61,6 @@ class CommentsController < ApplicationController
     if @comment.destroy
       CommentBroadcastJob.perform_now("destroy", @comment)
       flash.now[:success] = "Delete batang hidung mu!"
-      # redirect_to topic_post_comments_path(@topic, @post)
     end
   end
 

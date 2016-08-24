@@ -11,7 +11,7 @@ class PostsController < ApplicationController
     @topic = Topic.friendly.find(params[:topic_id])
     @post = current_user.posts.build(post_params.merge(topic_id: @topic.id))
     @new_post = Post.new
-    
+
     if @post.save
       flash[:success] = "You've created a new post."
     else
@@ -28,6 +28,7 @@ class PostsController < ApplicationController
   def update
     @topic = Topic.friendly.find(params[:topic_id])
     @post = Post.friendly.find(params[:id])
+    authorize @post
 
     if @post.update(post_params)
       flash.now[:success] = "Post updated"

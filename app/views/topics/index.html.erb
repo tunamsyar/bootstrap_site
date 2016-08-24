@@ -1,16 +1,24 @@
 <div class="topics">
   <h1>Topics</h1>
     <section class="background">
+      <section class="topics-container">
+        <div class="topics_parent">
           <div id="topic">
             <% @topics.each do |topic| %>
             <%= render partial: "topic", locals: {topic: topic} %>
             <% end %>
           </div>
+        </div>
+      </section>
 
-    <div id="topics-form-container">
-      <%= render partial: "form", locals: {topic: @topic} %>
-    </div>
-
-  </section>
+      <section class="forms-container">
+        <div class="topics-form">
+          <div id="topics-form-container">
+            <%= render partial: "form", locals: {topic: @topic} %>
+          </div>
+        </div>
+      </section>
+        
+    </section>
   <%= paginate @topics %>
 </div>

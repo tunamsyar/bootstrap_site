@@ -33,6 +33,7 @@ end
 
 def update
     @topic = Topic.friendly.find(params[:id])
+    authorize @topic
 
     if @topic.update(topic_params)
       flash.now[:success] = "Topic Updated"
@@ -45,13 +46,14 @@ end
 
 def destroy
     @topic = Topic.friendly.find(params[:id])
+    authorize @topic
+
     if @topic.destroy
       flash.now[:success] = "Topic suda delete da.."
     #   redirect_to topics_path
     # else
     #   redirect_to topics_path(@topic)
     end
-    authorize @topic
 
   end
   private

@@ -1,5 +1,5 @@
 <div id="topic_<%=topic.id%>">
-  <div class="topics_child">
+  <div class= "topics_child">
     <h3><%= link_to topic.title, topic_posts_path(topic) %></h3>
     <h5><%= topic.description %></h5>
     <li><%= link_to "Edit Topic", edit_topic_path(topic), remote: true %></li>

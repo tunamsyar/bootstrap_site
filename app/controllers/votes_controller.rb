@@ -1,6 +1,6 @@
 class VotesController < ApplicationController
   respond_to :js
-  before_action :authenticate!
+  before_action :authenticate!, only:[:upvote, :downvote]
 
   def upvote
     update_vote(1)

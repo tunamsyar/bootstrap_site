@@ -1,18 +1,23 @@
 <div class="posts">
   <h1>Posts</h1>
   <section class="background">
-
-    <div class="post_parent">
-        <div id= "posts">
-          <% @posts.each do |post| %>
-            <%= render partial: "post", locals: {topic: @topic, post: post}%>
-          <%end%>
+    <section class="post-container">
+      <div class="post_parent">
+          <div id= "posts">
+            <% @posts.each do |post| %>
+              <%= render partial: "post", locals: {topic: @topic, post: post}%>
+            <%end%>
         </div>
+      </div>
+    </section>
 
+    <section class="forms-container">
+      <div class="post-form">
         <div id="posts-form-container">
           <%= render partial: "form", locals: {topic: @topic, post: @post}%>
         </div>
-    </div>
+      </div>
+    </section>
 
   </section>
 </div>

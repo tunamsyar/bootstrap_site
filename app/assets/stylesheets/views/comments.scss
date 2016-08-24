@@ -1,7 +1,7 @@
 .comments{
 
   .background{
-      background-image: asset-url("bell.jpeg");
+      background-image: asset-url("pillion.jpeg");
       height: 100%;
       width: 100%;
       background-position: 50% 50%;
@@ -14,45 +14,33 @@
     text-align: center;
     vertical-align: text-top;
   }
+  
   h2:link{
     text-align: center;
   }
 
-  .comment_parent{
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    margin: 50px auto;
-    justify-content: space-between;
+  .comment-container{
+    max-width: 700px;
+    margin: 0 auto;
   }
 
-  .comment_child{
-    flex: 0 0 280px;
-    margin: 20px 10px;
+  .comment-parent{
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    justify-content: center;
+  }
+
+  .comment-child{
+    margin: 5px;
+    flex-grow: 2;
+    text-align: center;
     border-style: solid;
     border-width: medium;
-    text-align: center;
-
-    h1{
-      text-align: center;
-      vertical-align: text-top;
-      color: white;
-    }
-    a:link, a:visited, a:hover,a:active{
-      color: white;
-    }
   }
 
-  .add_new{
-    max-width: 1800px;
-    height: 50px;
-    background-color: white;
-    text-align: center;
-
-   a:link, a:visited, a:hover,a:active{
+  a:link, a:visited, a:hover,a:active{
      color: black;
      padding-bottom: 10px;
-   }
   }
-
 }
