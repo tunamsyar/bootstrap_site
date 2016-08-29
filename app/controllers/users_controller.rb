@@ -11,7 +11,7 @@ class UsersController < ApplicationController
         redirect_to root_path
       else
         flash[:danger]= "Passwords do not match!"
-        redirect_to new_user_path
+        redirect_to root_path
       end
   end
 

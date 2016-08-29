@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe UsersController, type: :controller do
 
   before(:all) do
-    @user = User.create(username: "guilfoyle", email: "guilfoyle@piedpiper.com", password: "password")
-    @invalid = User.create(username: "dinesh", email: "dinesh@piedpiper.com", password: "password")
+    @user = create(:user)
+    @invalid = create(:user, username: "dinesh", email: "dinesh@piedpiper.com")
   end
 
   describe "create user" do

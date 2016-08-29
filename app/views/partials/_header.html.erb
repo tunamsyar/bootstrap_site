@@ -18,9 +18,7 @@
         <li><%= link_to "Topics", topics_path %></li>
         <% if current_user %>
         <li>
-          <a class= "user-account" data-toggle="modal" data-target="#account">
-            My Account
-          </a>
+          <%= link_to "My Account", '#', class: 'user-account', data: { toggle: "modal", target: "#account"}%>
         </li>
 
         <li>
@@ -30,15 +28,11 @@
         <% else %>
 
         <li>
-          <a class= "user-register" data-toggle="modal" data-target="#register">
-            Register
-          </a>
+          <%= link_to "Register", '#', class: 'user-register', data: { toggle: "modal", target: "#register"}%>
         </li>
 
         <li>
-          <a class= "user-login" data-toggle="modal" data-target="#login">
-            Login
-          </a>
+          <%= link_to "Login", '#', class: 'user-login', data: { toggle: "modal", target: "#login" } %>
         </li>
         <% end %>
       </ul>

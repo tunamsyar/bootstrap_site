@@ -4,9 +4,9 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by_email(params[:email])
+    user = User.find_by_email(user_params[:email])
 
-    if user && user.authenticate(params[:password])
+    if user && user.authenticate(user_params[:password])
       session[:id] = user[:id]
       flash[:success]= "Welcome back #{current_user.username}"
       redirect_to root_path
@@ -22,8 +22,9 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 
-  # private
-  # def user_params
-  #   params.require(:user).permit(:email, :password)
+  private
+  def user_params
+    params.require(:user).permit(:email, :password)
+  end
 
 end

@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe TopicsController, type: :controller do
 
   before(:all) do
-    @user = User.create(username: "guilfoyle", email: "guilfoyle@mail.com", password: "password", role: 2)
-    @invalid = User.create(username: "dinesh", email: "dinesh@mail.com", password: "password", role: 0)
+    @user = create(:user, :admin)
+    @invalid = create(:user, :sequenced_email, :sequenced_username)
 
   end
 
@@ -12,6 +12,7 @@ RSpec.describe TopicsController, type: :controller do
     it "should redirect if not logged in" do
       params = {topic: {title: "new topic", description: "newly created topic", haha_spam: "spam" }}
       post :create, params: params
+      binding.pry
 
       expect(Topic.count).to eql(0)
       expect(flash[:danger]).to eql("You need to login first")

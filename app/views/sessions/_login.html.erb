@@ -3,23 +3,23 @@
     <div class="modal-content">
       <div class="modal-body">
         <section class = " background">
-          <%= form_tag sessions_path do %>
+          <%= form_for(:user, url: sessions_path, method: :post) do |f| %>
           <h1 class=" text-center">
             Login
           </h1>
 
           <div class=" form-group">
             <h4>Email</h4>
-            <%= text_field_tag :email, params[:email], id: "email_field", class: 'form-control' %>
+            <%= f.email_field :email, id: "email_field", class: 'form-control' %>
           </div>
 
           <div class=" form-group">
             <h4>Password</h4>
-            <%= password_field_tag :password, autocomplete: 'off', id: "password_field", class: 'form-control' %>
+            <%= f.password_field :password, autocomplete: 'off', id: "password_field", class: 'form-control' %>
           </div>
 
           <div class=" form-group text-center">
-            <%= submit_tag "Login", class: "btn btn-success btn-lg" %>
+            <%= f.submit "Login", class: "btn btn-success btn-lg" %>
           </div>
 
           <div class=" form-group text-center">

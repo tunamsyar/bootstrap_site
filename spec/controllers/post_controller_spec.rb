@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.describe PostsController, type: :controller do
 
   before(:all) do
-    @user = User.create(username: "guilfoyle", email: "guilfoyle@mail.com", password: "password", role: 0)
-    @invalid = User.create(username: "dinesh", email: "dinesh@mail.com", password: "password", role: 0)
-    @admin = User.create(username: "richard", email: "richard@mail.com", password: "password", role: 2)
-    @topic = Topic.create(title: "new topic", description: "new topics", id: "1")
-    @post = Post.create(title:"new post", body: "new posts", topic_id: "1", user_id: @user.id)
+    @user = create(:user)
+    @invalid = create(:user, :sequenced_email, :sequenced_username)
+    @admin = create(:user, :admin, :sequenced_email, :sequenced_username)
+    @topic = create(:topic)
+    @post = create(:post, :sequenced_title, :sequenced_body, topic_id: @topic.id, user_id: @user.id)
   end
 
   describe "index posts"do
